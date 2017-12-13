@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>What The Node2</title>
+  </head>
+  <body>
+    <h2>Get the...DP</h2>
+
+    <button class="action" id="version">
+      VersionDP
+    </button>
+    <button class="action" id="node-path">
+      PathDP
+    </button>
+
+    <h2>Result</h2>
+    <div class="result" id="result">
+    </div>
+
+    <script type="text/javascript">
+      var configureButtons = function() {
+        var get = function(endpoint) {
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', '/Apps/WhatTheDP/' + endpoint);
+          xhr.onload = function() {
+            if (xhr.status === 200) {
+              document.getElementById('result').innerText = xhr.responseText;
+            };
+          };
+
+          xhr.send();
+        };
+
+        document
+          .getElementById('version')
+          .addEventListener('click', function(args) {
+            get('version');
+          });
+
+        document
+          .getElementById('node-path')
+          .addEventListener('click', function(args) {
+            get('nodepath');
+          });
+      };
+
+      window.addEventListener('load', configureButtons);
+    </script>
+  </body>
+</html>

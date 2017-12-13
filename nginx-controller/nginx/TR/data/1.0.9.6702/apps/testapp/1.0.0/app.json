@@ -1,0 +1,10 @@
+{
+  "name": "WhatTheDP",
+  "displayName": "What The DP",
+  "version": "1.0",
+  "label": "Unstable",
+  "description": "Query information about the node.js ASI",
+  "defaultPlatform": "NodeJS",
+  "type": "WebApp",
+  "concurrent": true
+}
