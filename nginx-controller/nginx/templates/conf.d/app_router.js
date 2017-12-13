@@ -28,7 +28,10 @@ function getPlatformType(req, res) {
     {
     	appName = splitUrl[appPrefixIndex + 1];
     }
+ 
+    var platformType = findAppType(appName);
+    req.log("URI: " + req.uri + "\nPlatform type: " + platformType + "\n");
 
-    return findAppType(appName);
+    return platformType;
 }
 

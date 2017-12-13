@@ -19,7 +19,7 @@ RUN wget -O njs.tar.gz http://hg.nginx.org/njs/archive/tip.tar.gz && \
     tar xzvf nginx.tar.gz && \
     cd nginx-* && ./configure --with-compat --add-dynamic-module=../njs*/nginx && \
     make && make install && \
-    mv /nginx-1.13.3/objs/ngx_http_js_module.so /etc/nginx/modules/
+    mv /nginx-1.13.3/objs/ngx_http_js_module.so /etc/nginx/modules/ && \
     rm -f ../*.tar.gz
 
 # Uncomment the line below if you would like to add the default.pem to the image
