@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
       - name: webapi
-        image: achackery/webapi-asi
+        image: achackery/webapi-asi:1.0.0
         ports:
         - containerPort: 80
