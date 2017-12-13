@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: dotnet-rc
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dotnet
+    spec:
+      containers:
+      - name: dotnet
+        image: achackery/dotnet-asi
+        ports:
+        - containerPort: 80
