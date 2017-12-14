@@ -8,6 +8,22 @@ metadata:
        location ~ "\.\w{3,4}($|\?)" {
          root /TR/data/1.0.9.6702;
        }
+
+       if ($platformType = DotNet) {
+         set $backend "default-appserver-ingress-appserver.example.com-dotnet-svc";
+       } 
+  
+       if ($platformType = NodeJS) {
+         set $backend "nodejssvc";
+       }
+
+       if ($platformType = WebApi) {
+         set $backend "default-appserver-ingress-appserver.example.com-webapi-svc";
+       }
+       location / {
+         proxy_pass http://$backend;
+       }
+
 spec:
   tls:
   - hosts:
