@@ -14,7 +14,7 @@ spec:
         app: appserver-ingress
     spec:
       containers:
-      - image: achackery/appserver-ingress:1.0.9
+      - image: achackery/appserver-ingress:1.0.11
         imagePullPolicy: Always
         name: appserver-ingress
         ports:
@@ -31,5 +31,5 @@ spec:
         # NGINX configuration with configmaps
         args:
          #- -v=3
-         #- -nginx-configmaps=$(POD_NAMESPACE)/nginx-config
+          - -nginx-configmaps=$(POD_NAMESPACE)/nginx-config
           - -default-server-tls-secret=$(POD_NAMESPACE)/default-server-secret
