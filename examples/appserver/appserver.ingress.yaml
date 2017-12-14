@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: appserver-ingress
+  annotations:
+    nginx.org/server-snippets: |
+       #Serve static content (anything at the end of a uri with an extension in this POC
+       location ~ "\.\w{3,4}($|\?)" {
+         root /TR/data/1.0.9.6702;
+       }
+spec:
+  tls:
+  - hosts:
+    - appserver.example.com
+    secretName: appserver-secret
+  rules:
+  - host: appserver.example.com
+    http:
+      paths:
+      - path: /dotnetasi
+        backend:
+          serviceName: dotnet-svc
+          servicePort: 80
+      - path: /webapiasi
+        backend:
+          serviceName: webapi-svc
+          servicePort: 80
