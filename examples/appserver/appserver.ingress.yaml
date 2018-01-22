@@ -8,13 +8,13 @@ metadata:
        location ~ "\.\w{3,4}($|\?)" {
          root /TR/data/1.0.9.6702;
        }
-
+       set $backend "default-appserver-ingress-appserver.example.com-dotnet-svc";
        if ($platformType = DotNet) {
          set $backend "default-appserver-ingress-appserver.example.com-dotnet-svc";
        } 
   
        if ($platformType = NodeJS) {
-         set $backend "nodejssvc";
+         set $backend "default-appserver-ingress-appserver.example.com-nodejs612asi-svc";
        }
 
        if ($platformType = WebApi) {
@@ -41,3 +41,8 @@ spec:
         backend:
           serviceName: webapi-svc
           servicePort: 80
+      - path: /nodejsasi
+        backend:
+          serviceName: nodejs612asi-svc
+          servicePort: 3000
+

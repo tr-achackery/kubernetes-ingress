@@ -14,7 +14,7 @@ spec:
         app: appserver-ingress
     spec:
       containers:
-      - image: achackery/appserver-ingress:1.0.11
+      - image: achackery/appserver-ingress:1.0.14
         imagePullPolicy: Always
         name: appserver-ingress
         ports:

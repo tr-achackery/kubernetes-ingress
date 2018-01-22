@@ -14,3 +14,6 @@ spec:
         image: achackery/dotnet-asi:1.0.1
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            cpu: 400m
