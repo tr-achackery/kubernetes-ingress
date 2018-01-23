@@ -5,12 +5,12 @@ metadata:
   annotations:
     nginx.org/server-snippets: |
        #Serve static content (anything at the end of a uri with an extension in this POC
-       location ~ "\.\w{3,4}($|\?)" {
-         root /TR/data/1.0.9.6702;
+       location ~ "\.\w{2,4}($|\?)" {
+         root /mnt/TR/data/1.0.9.6702;
        }
-       set $backend "default-appserver-ingress-appserver.example.com-dotnet-svc";
+       set $backend "default-appserver-ingress-appserver.example.com-tr-appserver-svc";
        if ($platformType = DotNet) {
-         set $backend "default-appserver-ingress-appserver.example.com-dotnet-svc";
+         set $backend "default-appserver-ingress-appserver.example.com-tr-appserver-svc";
        } 
   
        if ($platformType = NodeJS) {
@@ -35,7 +35,7 @@ spec:
       paths:
       - path: /dotnetasi
         backend:
-          serviceName: dotnet-svc
+          serviceName: tr-appserver-svc
           servicePort: 80
       - path: /webapiasi
         backend:

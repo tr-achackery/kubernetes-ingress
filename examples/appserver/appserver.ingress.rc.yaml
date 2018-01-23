@@ -33,3 +33,11 @@ spec:
          #- -v=3
           - -nginx-configmaps=$(POD_NAMESPACE)/nginx-config
           - -default-server-tls-secret=$(POD_NAMESPACE)/default-server-secret
+        volumeMounts:
+          - mountPath: "/mnt"
+            name: trdata
+      volumes:
+      - name: trdata
+        persistentVolumeClaim:
+          claimName: efs
+
