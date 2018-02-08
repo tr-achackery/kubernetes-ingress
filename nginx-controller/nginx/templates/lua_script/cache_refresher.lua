@@ -1,14 +1,13 @@
-local workers = ngx.shared.workers
-if (workers:get("watcher_pid") == nil) then
-    workers:set("watcher_pid", ngx.worker.pid())
-else
+ngx.log(ngx.DEBUG, "in init worker.." .. ngx.worker.pid())
+
+if ngx.worker.id() ~= 0 then
     return
 end
 
-local app_store_manifest_file_name = "/TR/data/appmanifest/AppStoreManifest.json"
+local app_store_manifest_file_name = "AppStoreManifest.json"
 local refresh_delay = 60
 
-ngx.log(ngx.ERR, "setting worker pid for cache updater: ", ngx.worker.pid())
+ngx.log(ngx.DEBUG, "setting worker pid for cache updater: ", ngx.worker.pid())
 
 local watcher_handler
 watcher_handler = function()
