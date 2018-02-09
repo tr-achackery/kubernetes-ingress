@@ -4,7 +4,7 @@ if ngx.worker.id() ~= 0 then
     return
 end
 
-local app_store_manifest_file_name = "AppStoreManifest.json"
+local app_store_manifest_file_name = "/TR/data/appmanifest/AppStoreManifest.json"
 local refresh_delay = 60
 
 ngx.log(ngx.DEBUG, "setting worker pid for cache updater: ", ngx.worker.pid())
@@ -38,7 +38,7 @@ watcher_handler = function()
         os.remove(app_store_manifest_file_name .. ".temp")
 
         -- parse
-        local json = require "../lua_include/json"
+        local json = require "json"
         local parsedManifest = json.parse(content)
 
         -- dump to dict
