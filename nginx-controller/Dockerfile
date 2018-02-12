@@ -29,5 +29,6 @@ COPY nginx/TR/ /TR/
 # ADD default.pem /etc/nginx/secrets/default
 
 
-ENTRYPOINT ["/usr/local/openresty/nginx/sbin/nginx", "-g", "daemon off;"]
+# CMD ["/usr/local/openresty/nginx/sbin/nginx", "-g", "daemon off;"]
 # ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT ["/nginx-ingress"]
